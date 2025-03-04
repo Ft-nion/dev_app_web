@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <header style="height: 200px;">
+        <h1>Recetas de cocina</h1>
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>    
+    <form action="https://formsubmit.co/msia9kiuby@gmail.com" method="POST" class="form">
+        <h2 class="form-tittle">Contacto</h2>        
+        <div class="form-container">
+            <div class="form-grup">
+                <input type="text" id="name" name="name" class="form-input" placeholder="" required>
+                <label for="name" class="form-label1">Nombre:</label>
+                <span class="form-line"></span>
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="form-grup">
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="" required>
+                <label for="phone" class="form-label1">Teléfono:</label>
+                <span class="form-line"></span>
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="form-grup">
+                <input type="email" id="email" name="email" class="form-input" placeholder="" required>
+                <label for="email" class="form-label1">E-mail:</label>
+                <span class="form-line"></span>
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="form-grup">
+                <textarea id="message" name="message" class="form-input" cols="30" rows="5" placeholder="" required></textarea>
+                <label for="message" class="form-label1">Mensaje:</label>
+                <span class="form-line"></span>
+            </div>
+            <input type="submit" class="form-submit" value="Enviar">
+            <input type="hidden" name="_next" value="http://127.0.0.1:5500/forms/contac.html">
+            <input type="hidden" name="_captcha" value="false">
+        </div>
+        <div class="form-txt">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos y condiciones</a>
+        </div>
+    </form>
+</body>
+</html>
