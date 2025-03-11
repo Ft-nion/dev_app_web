@@ -27,8 +27,8 @@
             </div>
             <div class="form-container">
                 <div class="form-grup">
-                    <input type="text" id="user" class="form-input" placeholder="">
-                    <label for="user" class="form-label1">Usuario:</label>
+                    <input type="phone" id="phone" class="form-input" placeholder="">
+                    <label for="phone" class="form-label1">Telefono:</label>
                     <span class="form-line"></span>
                 </div>
             </div>

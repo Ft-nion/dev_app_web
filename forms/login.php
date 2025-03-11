@@ -33,8 +33,15 @@
                     <label for="password" class="form-label1">Contraseña:</label>
                     <span class="form-line"></span>
                 </div>
-            <input type="submit" class="form-submit" value="Enter">
+            <input type="submit" name="send" class="form-submit" value="Enter">
             </div>
     </form>
+
+    
+    <?php
+    include("../include/send.php");
+    ?>
+
+
 </body>
 </html>
