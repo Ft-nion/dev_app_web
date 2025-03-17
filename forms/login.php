@@ -21,14 +21,14 @@
         <p class="form-paragraph">Aún no tienes cuenta, da click <a href="./form-register.php" class="form-link">aquí</a></p>
         
         <div class="form-container">
-            <div class="form-group">
+            <div class="form-grup">
                 <input type="email" name="email" id="email" class="form-input" placeholder="">
                 <label for="email" class="form-label1">Email:</label>
                 <span class="form-line"></span>
             </div>
         </div>
         <div class="form-container">
-            <div class="form-group">
+            <div class="form-grup">
                 <input type="password" name="password" id="password" class="form-input" placeholder="">
                 <label for="password" class="form-label1">Contraseña:</label>
                 <span class="form-line"></span>

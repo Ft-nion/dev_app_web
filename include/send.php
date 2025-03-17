@@ -13,14 +13,15 @@ if (isset($_POST['send'])) {
         $name = trim($_POST['name']);
         $phone = trim($_POST['phone']);
         $email = trim($_POST['email']);
-        $message = trim($_POST['password']);
+        $password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT); // Encriptar la contraseña
 
         // Preparar la consulta para evitar inyecciones SQL
         $stmt = $conn->prepare("INSERT INTO users (name, phone, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $phone, $email, $password);
 
         if ($stmt->execute()) {
-            echo '<h3 class="success">Mensaje enviado exitosamente</h3>';
+            echo '<h3 class="success">Registrado con éxito. Redirigiendo al inicio de sesión...</h3>';
+            header("refresh:3;url=../forms/login.php"); // Redirigir después de 3 segundos
         } else {
             echo '<h3 class="error">Ocurrió un error</h3>';
         }
