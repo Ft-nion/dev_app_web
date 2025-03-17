@@ -13,6 +13,9 @@
         <nav class="main-nav">
             <ul class="nav-list">
             </ul>
+            <div class="nav-buttons">
+                <button onclick="window.location.href='login.php'">Ingresar</button>
+            </div>
         </nav>
     </header>    
     <form class="form" method="post">

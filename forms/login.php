@@ -13,7 +13,7 @@
         <nav class="main-nav">
         </nav>
     </header>    
-    <form class="form" method="POST">
+    <form class="form" method="post">
         <h2 class="form-tittle">Iniciar sesión</h2>
         <p class="form-paragraph">Aún no tienes cuenta, da click <a href="./form-register.php" class="form-link">aquí</a></p>
         
@@ -30,7 +30,7 @@
                 <label for="password" class="form-label1">Contraseña:</label>
                 <span class="form-line"></span>
             </div>
-            <input type="submit" name="send" class="form-submit" value="Enter">
+            <input type="submit" name="auth" class="form-submit" value="Enter">
         </div>
     </form>
     <?php

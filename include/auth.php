@@ -1,8 +1,8 @@
 <?php
 session_start();
-include("db.php");
+include("conn.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auth'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
