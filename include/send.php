@@ -19,9 +19,9 @@ if (isset($_POST['send'])) {
         $stmt = $conn->prepare("INSERT INTO users (name, phone, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $phone, $email, $password);
 
+      
         if ($stmt->execute()) {
-            echo '<h3 class="success">Registrado con éxito. Redirigiendo al inicio de sesión...</h3>';
-            header("refresh:3;url=../forms/login.php"); // Redirigir después de 3 segundos
+            echo '<h3 class="success">Registrado con éxito.</h3>';
         } else {
             echo '<h3 class="error">Ocurrió un error</h3>';
         }
