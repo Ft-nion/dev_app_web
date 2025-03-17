@@ -1,6 +1,4 @@
 <?php
-// filepath: /home/ft-nion/Documentos/desarrollo_web/chicken-recipes/include/conn.php
-
 $servername = "mnz.domcloud.co";
 $username = "front-escape-cuk";
 $password = "-x_2Dzb7AHN46n1Et-)";
@@ -13,5 +11,4 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-echo "Conexión exitosa";
 ?>
