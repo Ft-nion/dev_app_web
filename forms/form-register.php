@@ -15,7 +15,7 @@
             </ul>
         </nav>
     </header>    
-    <form class="form" method=" POST" action="../include/send.php">
+    <form class="form" method=" POST">
             <h2 class="form-tittle">Formulario de registro</h2>        
             <div class="form-container">
                 <div class="form-grup">
@@ -47,6 +47,9 @@
             <input type="submit" name="send" class="form-submit" value="Enter">
         </div>
     </form>
+    <?php
+    include("../include/send.php");
+    ?>
 
 </body>
 </html>
