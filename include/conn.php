@@ -1,7 +1,7 @@
 <?php
 $servername = "mnz.domcloud.co";
 $username = "front-escape-cuk";
-$password = "-x_2Dzb7AHN46n1Et-)";
+$password = "-x_2Dzb7AHN46n1Et-";
 $dbname = "front_escape_cuk_db";
 
 // Crear conexión
