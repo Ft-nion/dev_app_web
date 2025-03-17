@@ -13,7 +13,7 @@
         <nav class="main-nav">
         </nav>
     </header>    
-    <form class="form" method="POST">
+    <form class="form" method="POST" action="../include/auth.php">
         <h2 class="form-tittle">Iniciar sesión</h2>
         <p class="form-paragraph">Aún no tienes cuenta, da click <a href="./form-register.php" class="form-link">aquí</a></p>
         
@@ -33,8 +33,5 @@
             <input type="submit" name="send" class="form-submit" value="Enter">
         </div>
     </form>
-    <?php
-    include("../include/auth.php");
-    ?>
 </body>
 </html>
