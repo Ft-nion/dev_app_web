@@ -15,7 +15,7 @@
             </ul>
         </nav>
     </header>    
-    <form class="form" method=" POST">
+    <form class="form" method="post">
             <h2 class="form-tittle">Formulario de registro</h2>        
             <div class="form-container">
                 <div class="form-grup">
