@@ -11,9 +11,6 @@
     <header style="height: 200px;">
         <h1>Recetas de cocina</h1>
         <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a href="../index.php">Home</a></li>
-            </ul>
         </nav>
     </header>    
     <form class="form" method="POST" action="../include/auth.php">
