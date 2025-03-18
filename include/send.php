@@ -1,15 +1,24 @@
 <?php
-// filepath: /home/ft-nion/Documentos/desarrollo_web/chicken-recipes/include/send.php
-
+session_start();
 include("conn.php");
 
 if (isset($_POST['send'])) {
-    if (
-        strlen($_POST['name']) >= 1 &&
-        strlen($_POST['phone']) >= 1 &&
-        strlen($_POST['email']) >= 1 &&
-        strlen($_POST['password']) >= 1
-    ) {
+    $errors = [];
+
+    if (strlen($_POST['name']) < 1) {
+        $errors['name'] = "El nombre es obligatorio.";
+    }
+    if (strlen($_POST['phone']) < 1) {
+        $errors['phone'] = "El teléfono es obligatorio.";
+    }
+    if (strlen($_POST['email']) < 1) {
+        $errors['email'] = "El email es obligatorio.";
+    }
+    if (strlen($_POST['password']) < 1) {
+        $errors['password'] = "La contraseña es obligatoria.";
+    }
+
+    if (empty($errors)) {
         $name = trim($_POST['name']);
         $phone = trim($_POST['phone']);
         $email = trim($_POST['email']);
@@ -19,17 +28,21 @@ if (isset($_POST['send'])) {
         $stmt = $conn->prepare("INSERT INTO users (name, phone, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $phone, $email, $password);
 
-      
         if ($stmt->execute()) {
-            echo '<h3 class="success">Registrado con éxito.</h3>';
+            $_SESSION['message'] = "Registrado con éxito.";
+            $_SESSION['message_type'] = "success";
         } else {
-            echo '<h3 class="error">Ocurrió un error</h3>';
+            $_SESSION['message'] = "Ocurrió un error.";
+            $_SESSION['message_type'] = "error";
         }
 
         $stmt->close();
     } else {
-        echo '<h3 class="error">Llena todos los campos</h3>';
+        $_SESSION['errors'] = $errors;
     }
+
+    header("Location: ../forms/form-register.php");
+    exit();
 }
 
 $conn->close();
