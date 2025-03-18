@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auth'])) {
             $_SESSION['id'] = $id;
             $_SESSION['email'] = $email;
 
-            // Redirigir al index
-            header("Location: ../index.php");
+            // Redirigir al dashboard
+            header("Location: ../dashboard.php");
             exit;
         } else {
             $error_message = "Contraseña incorrecta.";
