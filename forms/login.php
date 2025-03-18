@@ -10,9 +10,9 @@
 <body>
     <header style="height: 200px;">
         <h1>Recetas de cocina</h1>
-        <nav class="main-nav">
-        <li><a href="../index.php">Home</a></li>
-        </nav>
+        <ul class="nav-list">
+           <li><a href="../index.php">Home</a></li>
+        </ul>
     </header>    
     <form class="form" method="post">
         <h2 class="form-tittle">Iniciar sesión</h2>

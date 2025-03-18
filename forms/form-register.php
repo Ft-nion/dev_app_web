@@ -32,7 +32,7 @@
         <h1>Recetas de cocina</h1>
         <nav class="main-nav">
             <ul class="nav-list">
-            <li><a href="../index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
             </ul>
             <div class="nav-buttons">
                 <button onclick="window.location.href='login.php'">Ingresar</button>
