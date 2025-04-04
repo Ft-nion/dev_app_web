@@ -1,4 +1,12 @@
 <?php
+session_start(); // Iniciar la sesión
+
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: ../../index.php'); // Redirigir al inicio de sesión si no está autenticado
+    exit();
+}
+
 require '../../include/conn.php'; // Asegúrate de que la ruta sea correcta
 
 // Consulta para obtener todos los usuarios
@@ -13,13 +21,14 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
     <link rel="stylesheet" href="../../styles/dashboard.css">
+    <link rel="stylesheet" href="../../styles/module.css">
 </head>
 <body>
         <nav class="main-nav">
             <ul class="nav-list">
             </ul>
             <div class="nav-buttons">
-                        <button onclick="window.location.href='./include/close.php'">Cerrar sesión</button>
+                        <button onclick="window.location.href='../../include/close.php'">Cerrar sesión</button>
             </div>
         </nav>
 
@@ -46,7 +55,7 @@ $result = $conn->query($sql);
         <div class="content-column">
             <h1>Lista de Usuarios</h1>
             <!-- Botón para agregar un nuevo usuario -->
-            <button onclick="window.location.href='add_user.php'" class="add-user-button">Agregar Usuario</button>
+            <button onclick="window.location.href='createUser.php'" class="add-user-button">Agregar Usuario</button>
             <table>
                 <thead>
                     <tr>
