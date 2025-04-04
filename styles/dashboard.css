@@ -1,0 +1,179 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Encabezado */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-list li {
+    margin-right: 15px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-buttons button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nav-buttons button:hover {
+    background-color: #d32f2f;
+}
+
+/* Contenedor principal */
+main {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en una fila */
+    gap: 20px; /* Espaciado entre las columnas */
+    padding: 20px;
+}
+
+/* Columna de módulos */
+.module-column {
+    flex: 1; /* Ocupa una parte proporcional del espacio */
+    max-width: 300px; /* Ancho máximo para los módulos */
+}
+
+.module {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px; /* Espaciado entre los módulos */
+}
+
+.module h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.module p {
+    margin: 10px 0;
+}
+
+/* Columna de contenido */
+.content-column {
+    flex: 2; /* Ocupa más espacio que la columna de módulos */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+table thead tr {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+table tbody tr td {
+    word-wrap: break-word;
+}
+
+/* Botón para agregar usuario */
+.add-user-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-user-button:hover {
+    background-color: #45a049;
+}
+
+/* Botones de acción */
+.edit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}

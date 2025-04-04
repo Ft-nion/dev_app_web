@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conn.php");
+require("conn.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auth'])) {
     $email = $_POST['email'];
