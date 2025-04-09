@@ -1,3 +1,11 @@
+<?php
+session_start(); // Iniciar la sesión
+
+// Verificar si el usuario está logueado
+$isLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+$role_id = $isLoggedIn ? $_SESSION['role_id'] : null; // Obtener el rol si está logueado
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,18 +13,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recetas de Pollo</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/recipes.css">
 </head>
 <body>
     <header>
         <h1>Recetas de cocina</h1>
+          <!-- Mostrar el correo del usuario y el botón de cerrar sesión -->
+        <h3>Bienvenido, <?php echo htmlspecialchars($_SESSION['email']); ?></h3>
         <nav class="main-nav">
             <ul class="nav-list">
                 <li><a href="index.php">Home</a></li>
+                <?php if ($isLoggedIn): ?>
+                        <li><a href="dashboard.php">Dashboard</a></li>
+                <?php endif; ?>
             </ul>
             <div class="nav-buttons">
-                <button onclick="window.location.href='./forms/form-register.php'">Registrarse</button>
-                <button onclick="window.location.href='./forms/login.php'">Ingresar</button>
+                <?php if ($isLoggedIn): ?>
+                    <button onclick="window.location.href='./include/close.php'">Cerrar sesión</button>
+                <?php else: ?>
+                    <!-- Mostrar los botones de registro e inicio de sesión -->
+                    <button onclick="window.location.href='./forms/form-register.php'">Registrarse</button>
+                    <button onclick="window.location.href='./forms/login.php'">Ingresar</button>
+                <?php endif; ?>
             </div>
         </nav>
     </header>
@@ -54,14 +71,13 @@
             </div>
         </section>
     </main>
-    <div>
+    <footer>
         <section class="ul-container">
             <ul class="footer-list">
-            <li><a href="./forms/contac.html">Contacto</a></li>
+                <li><a href="./forms/contac.html">Contacto</a></li>
             </ul>
         </section>
-    </div>
-   
+    </footer>
     <script src="scripts/main.js"></script>
 </body>
 </html>

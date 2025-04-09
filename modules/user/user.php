@@ -9,8 +9,10 @@ if (!isset($_SESSION['loggedin'])) {
 
 require '../../include/conn.php'; // Asegúrate de que la ruta sea correcta
 
-// Consulta para obtener todos los usuarios
-$sql = "SELECT id, name, phone, email, password, created_at FROM users";
+// Consulta para obtener todos los usuarios junto con el nombre del rol
+$sql = "SELECT users.id, users.name, users.phone, users.email, users.password, roles.name AS role_name, users.created_at 
+        FROM users 
+        JOIN roles ON users.role_id = roles.id";
 $result = $conn->query($sql);
 ?>
 
@@ -24,17 +26,14 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../../styles/module.css">
 </head>
 <body>
-        <nav class="main-nav">
-            <ul class="nav-list">
-            </ul>
-            <div class="nav-buttons">
-                        <button onclick="window.location.href='../../include/close.php'">Cerrar sesión</button>
-            </div>
-        </nav>
+    <nav class="main-nav">
+        <ul class="nav-list">
+        </ul>
+        <div class="nav-buttons">
+            <button onclick="window.location.href='../../include/close.php'">Cerrar sesión</button>
+        </div>
+    </nav>
 
-
-
-        
     <!-- Contenedor principal con módulos -->
     <main>
         <!-- Columna de módulos -->
@@ -64,6 +63,7 @@ $result = $conn->query($sql);
                         <th>Teléfono</th>
                         <th>Email</th>
                         <th>Contraseña</th>
+                        <th>Rol</th>
                         <th>Fecha de Registro</th>
                         <th>Acciones</th>
                     </tr>
@@ -82,6 +82,8 @@ $result = $conn->query($sql);
                             $passwordLength = strlen($row['password']);
                             $maskedPassword = str_repeat('*', min($passwordLength, 10));
                             echo "<td>" . $maskedPassword . "</td>";
+                            // Mostrar el nombre del rol en lugar del role_id
+                            echo "<td>" . $row['role_name'] . "</td>";
                             echo "<td>" . $row['created_at'] . "</td>";
                             // Botones de acción
                             echo "<td>";
@@ -91,7 +93,7 @@ $result = $conn->query($sql);
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='7'>No hay usuarios registrados.</td></tr>";
+                        echo "<tr><td colspan='8'>No hay usuarios registrados.</td></tr>";
                     }
                     ?>
                 </tbody>
