@@ -18,7 +18,9 @@ $role_id = $isLoggedIn ? $_SESSION['role_id'] : null; // Obtener el rol si está
     <header>
         <h1>Recetas de cocina</h1>
           <!-- Mostrar el correo del usuario y el botón de cerrar sesión -->
-        <h3>Bienvenido, <?php echo htmlspecialchars($_SESSION['email']); ?></h3>
+        <?php if ($isLoggedIn): ?>
+            <h3>Bienvenido, <?php echo htmlspecialchars($_SESSION['email']); ?></h3>
+        <?php endif; ?>
         <nav class="main-nav">
             <ul class="nav-list">
                 <li><a href="index.php">Home</a></li>
