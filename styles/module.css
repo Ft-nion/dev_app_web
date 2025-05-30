@@ -8,7 +8,7 @@ table {
 }
 
 table thead tr {
-    background-color: #4CAF50;
+    background-color: #525252;
     color: white;
     text-align: left;
     font-weight: bold;
@@ -34,7 +34,7 @@ table tbody tr td {
 
 /* Botón para agregar usuario */
 .add-user-button {
-    background-color: #4CAF50;
+    background-color: #525252;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -45,7 +45,7 @@ table tbody tr td {
 }
 
 .add-user-button:hover {
-    background-color: #45a049;
+    background-color: #525252;
 }
 
 /* Botones de acción */

@@ -57,16 +57,13 @@ $id_rol = $_SESSION['role_id']; // Obtener el rol del usuario
         <!-- Columna de módulos -->
         <div class="module-column">
             <div class="module">
-                <h3><a href="dashboard.php">Panel</a></h3> 
+                <h3><a href="dashboard.php">Panel</a></h3>
             </div>
-            <?php if ($id_rol != 2): // Mostrar el módulo de usuarios solo si el rol no es 2 ?>
             <div class="module">
                 <h3><a href="./modules/user/user.php">Usuarios</a></h3>
             </div>
-            <?php endif; ?>
             <div class="module">
-                <h3>Módulo 3</h3>
-                <p>Contenido del módulo 3.</p>
+                <h3>Recetas</h3>
             </div>
         </div>
 

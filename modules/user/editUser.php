@@ -17,6 +17,12 @@ if (!isset($_GET['id'])) {
 
 $userId = intval($_GET['id']); // Sanitizar el ID recibido
 
+// Verificar permisos: si no es administrador y el ID no coincide con el usuario logueado
+if ($_SESSION['role_id'] != 1 && $_SESSION['id'] != $userId) {
+    echo "<script>alert('No tienes permiso para editar este usuario.'); window.location.href='user.php';</script>";
+    exit();
+}
+
 // Obtener los datos actuales del usuario
 $sql = "SELECT id, name, phone, email, role_id FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
@@ -35,19 +41,27 @@ $user = $result->fetch_assoc();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? $user['name'];
     $phone = $_POST['phone'] ?? $user['phone'];
-    $email = $_POST['email'] ?? $user['email'];
-    $roleId = $_POST['role_id'] ?? $user['role_id'];
     $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
 
     // Construir la consulta de actualización
-    $updateSql = "UPDATE users SET name = ?, phone = ?, email = ?, role_id = ?";
-    $params = [$name, $phone, $email, $roleId];
-    $types = "sssi";
+    $updateSql = "UPDATE users SET name = ?, phone = ?";
+    $params = [$name, $phone];
+    $types = "ss";
 
     if ($password) {
         $updateSql .= ", password = ?";
         $params[] = $password;
         $types .= "s";
+    }
+
+    // Solo permitir que los administradores actualicen el rol y el email
+    if ($_SESSION['role_id'] == 1) {
+        $email = $_POST['email'] ?? $user['email'];
+        $roleId = $_POST['role_id'] ?? $user['role_id'];
+        $updateSql .= ", email = ?, role_id = ?";
+        $params[] = $email;
+        $params[] = $roleId;
+        $types .= "si";
     }
 
     $updateSql .= " WHERE id = ?";
@@ -75,18 +89,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../styles/module.css">
 </head>
 <body>
-    <nav class="main-nav">
-        <ul class="nav-list">
-        </ul>
-        <div class="nav-buttons">
-            <button onclick="window.location.href='../../include/close.php'">Cerrar sesión</button>
-        </div>
-    </nav>
+
+<header>
+        <h1>Recetas de cocina</h1>
+        <nav class="main-nav">
+            <ul class="nav-list">
+            <li><a href="../../index.php">Home</a></li>
+            <li><a href="../../dashboard.php">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-
-       <!-- Columna de módulos -->
-       <div class="module-column">
+        <!-- Columna de módulos -->
+        <div class="module-column">
             <div class="module">
                 <h3><a href="../../dashboard.php">Panel</a></h3>
             </div>
@@ -99,7 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        
         <!-- Columna de contenido -->
         <div class="content-column">
             <h1>Editar Usuario</h1>
@@ -110,15 +125,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="phone">Teléfono:</label>
                 <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($user['phone']); ?>" required>
                 <br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
-                <br>
-                <label for="role_id">Rol:</label>
-                <select id="role_id" name="role_id">
-                    <option value="1" <?php echo $user['role_id'] == 1 ? 'selected' : ''; ?>>Administrador</option>
-                    <option value="2" <?php echo $user['role_id'] == 2 ? 'selected' : ''; ?>>Usuario</option>
-                </select>
-                <br>
+                <?php if ($_SESSION['role_id'] == 1): ?>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                    <br>
+                    <label for="role_id">Rol:</label>
+                    <select id="role_id" name="role_id">
+                        <option value="1" <?php echo $user['role_id'] == 1 ? 'selected' : ''; ?>>Administrador</option>
+                        <option value="2" <?php echo $user['role_id'] == 2 ? 'selected' : ''; ?>>Usuario</option>
+                    </select>
+                    <br>
+                <?php endif; ?>
                 <label for="password">Nueva Contraseña (opcional):</label>
                 <input type="password" id="password" name="password">
                 <br>

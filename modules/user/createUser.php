@@ -7,10 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-
 require '../../include/conn.php'; // Asegúrate de que la conexión esté configurada correctamente
 
 // Manejar la creación del usuario
@@ -34,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Consulta para obtener los roles
-$rolesSql = "SELECT id, role_name FROM roles";
+$rolesSql = "SELECT id, name FROM roles";
 $rolesResult = $conn->query($rolesSql);
 ?>
 
@@ -89,7 +85,7 @@ $rolesResult = $conn->query($rolesSql);
                     <?php
                     if ($rolesResult->num_rows > 0) {
                         while ($role = $rolesResult->fetch_assoc()) {
-                            echo "<option value='" . $role['id'] . "'>" . htmlspecialchars($role['role_name']) . "</option>";
+                            echo "<option value='" . $role['id'] . "'>" . htmlspecialchars($role['name']) . "</option>";
                         }
                     } else {
                         echo "<option value=''>No hay roles disponibles</option>";

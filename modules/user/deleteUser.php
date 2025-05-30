@@ -2,6 +2,18 @@
 session_start();
 require '../../include/conn.php'; // Asegúrate de que la conexión esté configurada correctamente
 
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: ../../index.php'); // Redirigir al inicio de sesión si no está autenticado
+    exit();
+}
+
+// Verificar si el usuario tiene permisos de administrador
+if ($_SESSION['role_id'] != 1) {
+    echo "<script>alert('No tienes permiso para acceder a esta página.'); window.location.href='user.php';</script>";
+    exit();
+}
+
 // Verificar si se recibió el ID del usuario a eliminar
 if (isset($_GET['id'])) {
     $userId = intval($_GET['id']); // Sanitizar el ID recibido
